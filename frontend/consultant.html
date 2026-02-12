@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultant Dashboard — Digital Mental Health</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ===== MODERN CSS RESET & VARIABLES ===== */
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #818cf8;
+      --primary-dark: #3730a3;
+      --secondary: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --info: #3b82f6;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius: 0.5rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+      --transition: all 0.2s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%);
+      color: var(--gray-800);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 2rem;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      font-size: 1.125rem;
+    }
+
+    /* ===== LAYOUT & CONTAINERS ===== */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 1.25rem 0;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .brand i {
+      font-size: 1.75rem;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      outline: none;
+    }
+
+    .btn i {
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-success {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #0da271;
+      transform: translateY(-2px);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #dc2626;
+      transform: translateY(-2px);
+    }
+
+    .btn-logout {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-logout:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* ===== TABLE ===== */
+    .table-container {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-200);
+      margin-top: 1rem;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+    }
+
+    .table thead {
+      background: var(--gray-100);
+    }
+
+    .table th {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--gray-700);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .table tbody tr {
+      transition: var(--transition);
+    }
+
+    .table tbody tr:hover {
+      background: var(--gray-50);
+    }
+
+    .table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-online {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .badge-offline {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* ===== ANALYTICS GRID ===== */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .analytics-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
+    }
+
+    .analytics-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .analytics-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .analytics-icon.users {
+      background: #dbeafe;
+      color: var(--info);
+    }
+
+    .analytics-icon.appointments {
+      background: #f0f9ff;
+      color: var(--primary);
+    }
+
+    .analytics-icon.posts {
+      background: #fef3c7;
+      color: var(--warning);
+    }
+
+    .analytics-icon.pending {
+      background: #fef2f2;
+      color: var(--danger);
+    }
+
+    .analytics-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 0.25rem 0;
+    }
+
+    .analytics-label {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== PENDING POSTS ===== */
+    .posts-container {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .post-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
+    }
+
+    .post-card:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow);
+    }
+
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .post-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .author-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+
+    .post-content {
+      color: var(--gray-700);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    /* ===== MODAL ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+      animation: slideUp 0.3s ease;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .modal-header {
+      padding: 1.5rem 1.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .close {
+      font-size: 1.5rem;
+      color: var(--gray-500);
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .close:hover {
+      background: var(--gray-200);
+      color: var(--gray-700);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    textarea {
+      width: 100%;
+      padding: 0.875rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-300);
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 120px;
+      transition: var(--transition);
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    /* ===== UTILITIES ===== */
+    .mb-2 {
+      margin-bottom: 2rem;
+    }
+
+    .mt-1 {
+      margin-top: 1rem;
+    }
+
+    .mt-2 {
+      margin-top: 2rem;
+    }
+
+    .mt-3 {
+      margin-top: 3rem;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .card {
+        padding: 1.5rem 1rem;
+      }
+
+      .analytics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .table-container {
+        border-radius: var(--radius);
+      }
+
+      .post-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .analytics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-row {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .brand {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-row">
+      <div class="brand">
+        <i class="fas fa-brain"></i>
+        <span>Consultant Dashboard</span>
+      </div>
+      <div class="nav-right">
+        <button id="consultantLogout" class="btn btn-logout">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Appointments Section -->
+    <section class="card">
+      <div class="card-header">
+        <h2><i class="fas fa-calendar-check"></i> Appointments</h2>
+        <button id="refreshAppointments" class="btn btn-outline" onclick="fetchAppointments()">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+      </div>
+      <div class="table-container">
+        <table class="table" id="appointmentsTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Client</th>
+              <th>Mode</th>
+              <th>Date & Time</th>
+              <th>Subject</th>
+              <th>Created</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dynamic content will go here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section id="admin" class="card">
+      <div class="card-header">
+        <h2><i class="fas fa-chart-line"></i> Admin Dashboard</h2>
+        <button id="refresh-analytics" class="btn btn-primary" onclick="fetchAnalytics()">
+          <i class="fas fa-redo"></i> Refresh Analytics
+        </button>
+      </div>
+
+      <!-- Analytics Section -->
+      <div id="analytics-container" class="analytics-grid">
+        <!-- Dynamic analytics cards will go here -->
+      </div>
+
+      <h3><i class="fas fa-shield-alt"></i> Moderation</h3>
+      <div id="pending-posts" class="posts-container"></div>
+    </section>
+  </main>
+
+  <!-- Email Modal -->
+  <div id="emailModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-paper-plane"></i> Send Email</h2>
+        <button class="close" data-close="emailModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="emailForm">
+          <input type="hidden" name="id" id="emailApptId" />
+          <div class="form-group">
+            <label for="emailMessage">Message to Client</label>
+            <textarea name="message" id="emailMessage" placeholder="Type your message here..." required></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">
+              <i class="fas fa-paper-plane"></i> Send Email
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Helper: Format Date
+    function formatDate(dateString) {
+      if (!dateString) return '-';
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    // Helper: Mode Badge
+    function getModeBadge(mode) {
+      if (!mode) return '';
+      // Simple heuristic for badge color
+      const m = mode.toLowerCase();
+      if (m.includes('video') || m.includes('online') || m.includes('zoom')) return 'badge-online';
+      return 'badge-offline';
+    }
+
+    async function fetchAppointments() {
+      const resp = await fetch('/api/consultant/appointments');
+      if (!resp.ok) {
+        alert('Failed to load appointments');
+        return;
+      }
+      const data = await resp.json();
+      const tbody = document.querySelector('#appointmentsTable tbody');
+      tbody.innerHTML = '';
+
+      data.forEach(appt => {
+        const tr = document.createElement('tr');
+        // Try to get a clean email/name for avatar
+        const email = appt.email || '?';
+        const initial = email.charAt(0).toUpperCase();
+
+        tr.innerHTML = `
+          <td><strong>#${appt.id}</strong></td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <div class="author-avatar">${initial}</div>
+              <div>
+                <div>${email}</div>
+                <small style="color: var(--gray-500);">Client</small>
+              </div>
+            </div>
+          </td>
+          <td><span class="badge ${getModeBadge(appt.mode)}">${appt.mode || 'Online'}</span></td>
+          <td>${formatDate(appt.datetime)}</td>
+          <td>${appt.subject || '-'}</td>
+          <td>${formatDate(appt.created_at)}</td>
+          <td>
+            <button class="btn btn-outline sendEmailBtn" data-id="${appt.id}" style="padding: 0.5rem 1rem;">
+              <i class="fas fa-envelope"></i> Email
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.querySelectorAll('.sendEmailBtn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('emailApptId').value = btn.dataset.id;
+          document.getElementById('emailModal').style.display = 'flex';
+        });
+      });
+    }
+
+    document.getElementById('emailForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('emailApptId').value;
+      const message = e.target.message.value;
+
+      // UX: disabling button
+      const btn = e.target.querySelector('button');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      btn.disabled = true;
+
+      const resp = await fetch('/api/consultant/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, message })
+      });
+      const data = await resp.json();
+
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+
+      if (resp.ok) {
+        alert('Email sent to ' + (data.sent_to || 'recipient'));
+        document.getElementById('emailModal').style.display = 'none';
+        e.target.reset();
+      } else {
+        alert('Error: ' + (data.error || 'failed'));
+      }
+    });
+
+    async function fetchAnalytics() {
+      const res = await fetch('/api/admin/analytics');
+      const data = await res.json(); // { appointments_total: X, posts_total: Y, mood_entries_total: Z }
+
+      const container = document.getElementById('analytics-container');
+      container.innerHTML = '';
+
+      // Mapping backend keys to UI
+      const displayMap = {
+        'appointments_total': { label: 'Total Appointments', icon: 'fas fa-calendar-check', class: 'appointments' },
+        'posts_total': { label: 'Total Posts', icon: 'fas fa-comments', class: 'posts' },
+        'mood_entries_total': { label: 'Mood Entries', icon: 'fas fa-smile', class: 'users' }
+      };
+
+      // Show known keys
+      Object.keys(displayMap).forEach(key => {
+        if (data[key] !== undefined) {
+          const conf = displayMap[key];
+          const card = document.createElement('div');
+          card.className = 'analytics-card';
+          card.innerHTML = `
+            <div class="analytics-icon ${conf.class}">
+              <i class="${conf.icon}"></i>
+            </div>
+            <div class="analytics-value">${data[key]}</div>
+            <div class="analytics-label">${conf.label}</div>
+          `;
+          container.appendChild(card);
+        }
+      });
+
+      // Also show any other keys from backend if they exist (generic fallback)
+      Object.keys(data).forEach(key => {
+        if (!displayMap[key] && key !== 'sample_timestamp') {
+          const card = document.createElement('div');
+          card.className = 'analytics-card';
+          card.innerHTML = `
+            <div class="analytics-icon pending">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <div class="analytics-value">${data[key]}</div>
+            <div class="analytics-label">${key.replace(/_/g, ' ')}</div>
+          `;
+          container.appendChild(card);
+        }
+      });
+
+      // Pending Posts
+      const mp = await fetch('/api/admin/pending');
+      const pending = await mp.json();
+      const postsContainer = document.getElementById('pending-posts');
+      postsContainer.innerHTML = '';
+
+      if (pending.length === 0) {
+        postsContainer.innerHTML = '<p style="color:var(--gray-500); text-align:center;">No pending posts.</p>';
+      }
+
+      pending.forEach(p => {
+        const el = document.createElement('div');
+        el.className = 'post-card';
+        // author avatar
+        const authorInitial = (p.author || 'A').charAt(0).toUpperCase();
+
+        el.innerHTML = `
+          <div class="post-header">
+            <div class="post-author">
+              <div class="author-avatar">${authorInitial}</div>
+              <div>
+                <strong>${p.author || 'Anonymous'}</strong>
+                <div style="font-size: 0.875rem; color: var(--gray-500);">${formatDate(p.created_at)}</div>
+              </div>
+            </div>
+          </div>
+          <div class="post-content">${p.content}</div>
+          <div class="post-actions">
+            <button data-id="${p.id}" class="approve-btn btn btn-success">
+              <i class="fas fa-check"></i> Approve
+            </button>
+            <button data-id="${p.id}" class="delete-btn btn btn-danger">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </div>
+        `;
+        postsContainer.appendChild(el);
+      });
+
+      // Events
+      postsContainer.querySelectorAll('.approve-btn').forEach(btn =>
+        btn.addEventListener('click', async (e) => {
+          const id = e.target.closest('button').dataset.id;
+          const res = await fetch('/api/admin/approve', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id })
+          });
+          const d = await res.json();
+          if (d.success) fetchAnalytics(); else alert('Failed');
+        })
+      );
+
+      postsContainer.querySelectorAll('.delete-btn').forEach(btn =>
+        btn.addEventListener('click', async (e) => {
+          if (!confirm("Are you sure?")) return;
+          const id = e.target.closest('button').dataset.id;
+          const res = await fetch('/api/admin/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id })
+          });
+          const d = await res.json();
+          if (d.success) fetchAnalytics(); else alert('Failed');
+        })
+      );
+    }
+
+    document.getElementById('consultantLogout').addEventListener('click', async () => {
+      await fetch('/api/consultant/logout');
+      window.location.href = '/';
+    });
+
+    // Close Modals
+    document.querySelectorAll('.close').forEach(el => {
+      el.addEventListener('click', () => {
+        const id = el.dataset.close;
+        document.getElementById(id).style.display = 'none';
+      });
+    });
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+      }
+    });
+
+    // Init
+    fetchAppointments();
+    fetchAnalytics();
+  </script>
+</body>
+
+</html>

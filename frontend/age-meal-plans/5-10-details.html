@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete 7-Day Plan for 5-10 Year Olds</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8e9ff 100%);
+            color: #2d2d2d; 
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8B5FBF, #6C63FF);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 95, 191, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: rgba(139, 95, 191, 0.15);
+            color: #8B5FBF;
+            border: 2px solid #8B5FBF;
+        }
+        
+        .nav-btn.secondary:hover {
+            background: rgba(139, 95, 191, 0.25);
+        }
+        
+        h1 { 
+            color: #8B5FBF; 
+            margin-bottom: 30px; 
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+        }
+        
+        .day-plan { 
+            background: white; 
+            padding: 30px; 
+            margin-bottom: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .day-plan:hover {
+            box-shadow: 0 10px 30px rgba(139, 95, 191, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .day-header { 
+            background: linear-gradient(135deg, #8B5FBF, #6C63FF); 
+            color: white; 
+            padding: 15px; 
+            border-radius: 10px; 
+            margin-bottom: 20px;
+        }
+        
+        .day-header h2 {
+            margin: 0;
+        }
+        
+        .meal { 
+            margin-bottom: 20px; 
+            padding: 15px; 
+            background: #f8f9ff; 
+            border-radius: 10px;
+            border-left: 4px solid #8B5FBF;
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        th, td { 
+            padding: 12px; 
+            text-align: left; 
+            border-bottom: 1px solid #ddd; 
+        }
+        
+        th { 
+            background: #8B5FBF; 
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: rgba(139, 95, 191, 0.05);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Complete 7-Day Meal Plan for Children (5-10 Years)</h1>
+        
+        <div class="day-plan">
+            <div class="day-header"><h2>Day 1: Monday</h2></div>
+            <div class="meal"><strong>Breakfast:</strong> Whole wheat pancakes with banana slices and honey</div>
+            <div class="meal"><strong>Lunch:</strong> Chicken pasta with hidden vegetable sauce</div>
+            <div class="meal"><strong>Snack:</strong> Apple slices with peanut butter</div>
+            <div class="meal"><strong>Dinner:</strong> Fish fingers with sweet potato fries and peas</div>
+        </div>
+        
+        <div class="day-plan">
+            <div class="day-header"><h2>Day 2: Tuesday</h2></div>
+            <div class="meal"><strong>Breakfast:</strong> Scrambled eggs with whole grain toast</div>
+            <div class="meal"><strong>Lunch:</strong> Cheese and vegetable quesadillas</div>
+            <div class="meal"><strong>Snack:</strong> Yogurt with berries</div>
+            <div class="meal"><strong>Dinner:</strong> Mini meatballs with spaghetti and broccoli</div>
+        </div>
+        
+        <table>
+            <tr><th>Nutrient</th><th>Daily Requirement</th><th>Sources</th></tr>
+            <tr><td>Calcium</td><td>1000mg</td><td>Milk, yogurt, cheese</td></tr>
+            <tr><td>Iron</td><td>10mg</td><td>Lean meat, beans, spinach</td></tr>
+            <tr><td>Vitamin C</td><td>25mg</td><td>Oranges, strawberries, bell peppers</td></tr>
+        </table>
+        
+        <div class="nav-buttons" style="margin-top: 40px;">
+            <a href="../html/meal-details.html#age-5-10" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Back to All Plans
+            </a>
+            <a href="../html/meal.html" class="nav-btn secondary">
+                <i class="fas fa-home"></i> Main Meals
+            </a>
+            <a href="../html/meal-details.html" class="nav-btn secondary">
+                <i class="fas fa-list"></i> All Age Groups
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Cross-file data system for meal plans
+        window.mealPlanSystem = {
+            ageGroup: '5-10',
+            currentFile: 'age-meal-plans/5-10-details.html',
+            
+            init: function() {
+                this.setupNavigation();
+                this.logNavigation();
+            },
+            
+            setupNavigation: function() {
+                // Store current age group in session storage for cross-file navigation
+                sessionStorage.setItem('currentAgeGroup', this.ageGroup);
+                sessionStorage.setItem('currentFile', this.currentFile);
+            },
+            
+            logNavigation: function() {
+                // Log for debugging cross-file navigation
+                const navButtons = document.querySelectorAll('.nav-btn');
+                navButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const targetFile = this.href;
+                        sessionStorage.setItem('previousFile', window.mealPlanSystem.currentFile);
+                        sessionStorage.setItem('previousAgeGroup', window.mealPlanSystem.ageGroup);
+                    });
+                });
+            },
+            
+            fetchMealData: function() {
+                // Fetch data from centralized JSON if available
+                fetch('../resources/meals-data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data['5-10']) {
+                            console.log('Meal data loaded for 5-10 age group');
+                        }
+                    })
+                    .catch(error => {
+                        // Data file not required, using static HTML content
+                        console.log('Using static meal plan content');
+                    });
+            }
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            window.mealPlanSystem.init();
+            window.mealPlanSystem.fetchMealData();
+        });
+    </script>
+</body>
+</html>

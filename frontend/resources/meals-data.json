@@ -1,0 +1,167 @@
+{
+  "5-10": {
+    "ageGroup": "5-10 Years",
+    "category": "Childhood Growth",
+    "description": "Children need balanced nutrition for healthy development and growth. This plan focuses on building strong bones, developing healthy eating habits, and providing energy for active play.",
+    "dailyCalories": "1400-1800 kcal",
+    "keyNutrients": [
+      "Calcium (1000mg) - Milk, yogurt, cheese",
+      "Iron (10mg) - Lean meat, beans, spinach",
+      "Vitamin C (25mg) - Oranges, strawberries, bell peppers",
+      "Protein (19-34g) - Chicken, fish, eggs, beans"
+    ],
+    "mealPlan": {
+      "day1": {
+        "dayName": "Monday",
+        "theme": "Healthy Start",
+        "meals": {
+          "breakfast": "Whole wheat pancakes with banana slices and honey",
+          "lunch": "Chicken pasta with hidden vegetable sauce",
+          "snack": "Apple slices with peanut butter",
+          "dinner": "Fish fingers with sweet potato fries and peas"
+        }
+      },
+      "day2": {
+        "dayName": "Tuesday",
+        "theme": "Growth Boost",
+        "meals": {
+          "breakfast": "Scrambled eggs with whole grain toast",
+          "lunch": "Cheese and vegetable quesadillas",
+          "snack": "Yogurt with berries",
+          "dinner": "Mini meatballs with spaghetti and broccoli"
+        }
+      }
+    },
+    "tips": [
+      "Make meals fun with colorful vegetables",
+      "Limit sugary snacks and drinks",
+      "Encourage regular physical activity",
+      "Establish consistent meal times"
+    ]
+  },
+  "11-20": {
+    "ageGroup": "11-20 Years",
+    "category": "Adolescence & Growth",
+    "description": "Teenagers require increased nutrition for rapid growth spurts and high activity levels. This plan supports bone development, muscle growth, and brain function during critical developmental years.",
+    "dailyCalories": "2000-2400 kcal",
+    "keyNutrients": [
+      "Protein (46-52g) - Essential for muscle growth",
+      "Calcium (1300mg) - Critical for bone development",
+      "Iron (15mg for girls, 11mg for boys) - Energy and oxygen transport",
+      "B Vitamins - Brain function and metabolism",
+      "Zinc (8-11mg) - Growth and immune function"
+    ],
+    "mealPlan": {
+      "day1": {
+        "dayName": "Monday - Growth Focus",
+        "meals": {
+          "breakfast": "Protein smoothie with banana, spinach, and protein powder",
+          "lunch": "Chicken and avocado wrap with whole grain tortilla",
+          "snack": "Greek yogurt with honey and nuts",
+          "dinner": "Lean steak with roasted vegetables and quinoa"
+        }
+      },
+      "day2": {
+        "dayName": "Tuesday - Brain Fuel",
+        "meals": {
+          "breakfast": "Oatmeal with walnuts and blueberries",
+          "lunch": "Salmon salad with mixed greens",
+          "snack": "Apple with almond butter",
+          "dinner": "Turkey meatballs with whole wheat pasta"
+        }
+      }
+    },
+    "tips": [
+      "Include protein at every meal",
+      "Choose whole grains over refined",
+      "Limit energy drinks and caffeine",
+      "Stay hydrated with water, not sugary drinks",
+      "Balance screen time with physical activity"
+    ]
+  },
+  "21-40": {
+    "ageGroup": "21-40 Years",
+    "category": "Active Adulthood",
+    "description": "Adults in this age group need balanced nutrition for sustained energy, productivity, and overall health. This plan supports fitness goals, mental health, and disease prevention.",
+    "dailyCalories": "2000-2500 kcal",
+    "keyNutrients": [
+      "Lean Protein (50-60g) - Muscle maintenance",
+      "Fiber (25-30g) - Digestive health",
+      "Antioxidants - Protection against aging",
+      "Omega-3 Fatty Acids - Heart and brain health",
+      "Vitamins & Minerals - Energy and immunity"
+    ],
+    "mealPlan": {
+      "day1": {
+        "dayName": "Monday - Energy & Productivity",
+        "meals": {
+          "breakfast": "Avocado toast with poached eggs and spinach",
+          "lunch": "Grilled chicken salad with mixed greens and vinaigrette",
+          "snack": "Handful of almonds and an orange",
+          "dinner": "Baked salmon with asparagus and wild rice"
+        }
+      },
+      "day2": {
+        "dayName": "Tuesday - Metabolism Boost",
+        "meals": {
+          "breakfast": "Greek yogurt with chia seeds and berries",
+          "lunch": "Lentil soup with whole grain bread",
+          "snack": "Protein bar or hard-boiled eggs",
+          "dinner": "Stir-fried tofu with vegetables and brown rice"
+        }
+      }
+    },
+    "tips": [
+      "Plan meals ahead to avoid unhealthy choices",
+      "Include variety of colorful vegetables",
+      "Choose lean proteins",
+      "Limit processed foods and sodium",
+      "Stay active with regular exercise",
+      "Manage stress through balanced nutrition"
+    ]
+  },
+  "40+": {
+    "ageGroup": "40+ Years",
+    "category": "Mature Wellness",
+    "description": "People over 40 need focused nutrition for heart health, bone density maintenance, and disease prevention. This plan supports cardiovascular health, weight management, and sustained energy.",
+    "dailyCalories": "1800-2200 kcal",
+    "keyNutrients": [
+      "Omega-3 Fatty Acids - Heart health",
+      "Fiber (25-30g) - Cholesterol and blood sugar control",
+      "Antioxidants - Disease prevention",
+      "Calcium (1200mg) - Bone health",
+      "Vitamin D (600-800 IU) - Calcium absorption",
+      "Potassium - Blood pressure control"
+    ],
+    "mealPlan": {
+      "day1": {
+        "dayName": "Monday - Heart Health Focus",
+        "meals": {
+          "breakfast": "Oatmeal with flaxseeds and berries",
+          "lunch": "Mediterranean salad with olive oil dressing",
+          "snack": "Handful of walnuts and green tea",
+          "dinner": "Baked mackerel with steamed vegetables"
+        }
+      },
+      "day2": {
+        "dayName": "Tuesday - Bone Strength",
+        "meals": {
+          "breakfast": "Calcium-fortified cereal with milk",
+          "lunch": "Sardines on whole grain toast with leafy greens",
+          "snack": "Yogurt with almonds",
+          "dinner": "Tofu stir-fry with broccoli and sesame seeds"
+        }
+      }
+    },
+    "tips": [
+      "Monitor portion sizes",
+      "Include foods rich in omega-3s (fish, nuts)",
+      "Eat plenty of leafy greens for bone health",
+      "Limit salt and sugar intake",
+      "Stay active to maintain muscle mass",
+      "Regular health checkups and monitoring",
+      "Consider supplements like Vitamin D if needed",
+      "Manage weight to reduce health risks"
+    ]
+  }
+}

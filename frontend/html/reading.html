@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading & Literature</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Reset & Fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fdfdfd;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            color: #333;
+            border-bottom-left-radius: 50% 15%;
+            border-bottom-right-radius: 50% 15%;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Quotes Section */
+        .quotes {
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .quotes h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #6a0572;
+        }
+
+        .quote-list blockquote {
+            font-style: italic;
+            margin: 1rem auto;
+            max-width: 700px;
+            padding: 1rem 2rem;
+            border-left: 4px solid #6a0572;
+            background: #f9f5ff;
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+
+        .quote-list span {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #444;
+        }
+
+        /* Books Section */
+        .books {
+            padding: 3rem 2rem;
+            background: #fafafa;
+        }
+
+        .books h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .book-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card h3 {
+            color: #d72638;
+            margin-bottom: 0.3rem;
+        }
+
+        .book-card .summary {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #d72638;
+            color: white;
+            font-size: 1rem;
+            margin-top: 2rem;
+            border-top-left-radius: 40% 15%;
+            border-top-right-radius: 40% 15%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>📚 Reading & Literature</h1>
+        <p>Expand your mind with wisdom, stories, and timeless lessons.</p>
+    </header>
+
+    <!-- Quotes Section -->
+    <section class="quotes">
+        <h2>✨ Inspiring Quotes</h2>
+        <div class="quote-list">
+            <blockquote>“A reader lives a thousand lives before he dies. The man who never reads lives only one.”
+                <span>- George R.R. Martin</span>
+            </blockquote>
+            <blockquote>“So many books, so little time.” <span>- Frank Zappa</span></blockquote>
+            <blockquote>“Reading is essential for those who seek to rise above the ordinary.” <span>- Jim Rohn</span>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Book References Section -->
+    <section class="books">
+        <h2>📖 Recommended Books</h2>
+        <div class="book-grid">
+            <div class="book-card">
+                <h3>The Alchemist</h3>
+                <p><em>Paulo Coelho</em></p>
+                <p class="summary">A philosophical tale about following your dreams and listening to your heart.</p>
+            </div>
+            <div class="book-card">
+                <h3>Atomic Habits</h3>
+                <p><em>James Clear</em></p>
+                <p class="summary">Practical strategies on how small habits can lead to big life changes.</p>
+            </div>
+            <div class="book-card">
+                <h3>To Kill a Mockingbird</h3>
+                <p><em>Harper Lee</em></p>
+                <p class="summary">A powerful novel addressing racial injustice, empathy, and morality.</p>
+            </div>
+            <div class="book-card">
+                <h3>Sapiens: A Brief History of Humankind</h3>
+                <p><em>Yuval Noah Harari</em></p>
+                <p class="summary">An exploration of how humans shaped culture, society, and civilization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>📖 Keep reading, keep growing ✨</p>
+    </footer>
+</body>
+
+</html>

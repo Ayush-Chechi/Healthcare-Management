@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Routine Manager | Healer</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================= VARIABLES & GLOBAL ================= */
+        :root {
+          --primary-color: #8B5FBF;
+          --secondary-color: #6C63FF;
+          --accent-color: #36D1DC;
+          --dark-bg: rgba(15, 15, 35, 0.85);
+          --card-bg: rgba(255, 255, 255, 0.95);
+          --hover-bg: rgba(255, 255, 255, 0.98);
+          --form-bg: rgba(255, 255, 255, 0.9);
+          --footer-bg: #0F0F23;
+          --text-light: #FFFFFF;
+          --text-dark: #2D2D2D;
+          --text-gray: #666666;
+          --transition-speed: 0.4s;
+          --border-radius: 15px;
+          --header-height: 70px;
+          --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+          --shadow: 0 10px 30px rgba(139, 95, 191, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        /* Enhanced Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(139, 95, 191, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient);
+            border-radius: 5px;
+            transition: all var(--transition-speed);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            box-shadow: 0 0 15px rgba(139, 95, 191, 0.3);
+        }
+
+        /* ================= BODY & BACKGROUND ================= */
+        body {
+            font-family: "Poppins", sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(139, 95, 191, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* ================= HEADER ENHANCEMENTS ================= */
+        header {
+            width: 100%;
+            padding: 1rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: var(--header-height);
+            transition: all var(--transition-speed);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform var(--transition-speed);
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .user-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all var(--transition-speed);
+            box-shadow: 0 0 20px rgba(139, 95, 191, 0.3);
+        }
+
+        .user-logo:hover {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 0 30px rgba(108, 99, 255, 0.5);
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all var(--transition-speed);
+            box-shadow: 0 0 20px rgba(139, 95, 191, 0.3);
+        }
+
+        .logo-img:hover {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 0 30px rgba(108, 99, 255, 0.5);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        
+
+        /* Navigation Enhancements */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color var(--transition-speed);
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient);
+            bottom: 0;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        nav ul li a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Menu Enhancements */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 1.5rem;
+                background: rgba(15, 15, 35, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 2rem;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                border-radius: 0 0 20px 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            nav ul.show-menu {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+
+            .menu-icon.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+                background: var(--accent-color);
+            }
+
+            .menu-icon.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-icon.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+                background: var(--accent-color);
+            }
+        }
+
+        /* ================= MAIN CONTENT ================= */
+        main {
+            padding-top: calc(var(--header-height) + 2rem);
+            min-height: calc(100vh - 400px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= DAILY ROUTINE ================= */
+        #daysetee {
+            padding: 4rem 10% 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease;
+        }
+
+        #daysetee h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        #daysetee h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        #daysetee h3 {
+            margin: 2rem 0 1.2rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            position: relative;
+            padding-left: 3rem;
+            transition: all var(--transition-speed);
+        }
+
+        #daysetee h3::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            transition: all var(--transition-speed);
+        }
+
+        #daysetee h3:hover {
+            color: var(--secondary-color);
+        }
+
+        #daysetee h3:hover::before {
+            transform: rotate(180deg);
+            color: var(--secondary-color);
+        }
+
+        #daysetee h4 {
+            margin: 1.5rem 0 0.8rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding-left: 1rem;
+            border-left: 3px solid var(--primary-color);
+            transition: all var(--transition-speed);
+        }
+
+        /* Routine Lists */
+        .routine-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(139, 95, 191, 0.1);
+            box-shadow: var(--shadow);
+            transition: all var(--transition-speed);
+            backdrop-filter: blur(10px);
+        }
+
+        .routine-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 95, 191, 0.2);
+        }
+
+        .routine-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .routine-list li {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(139, 95, 191, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all var(--transition-speed);
+            color: var(--text-dark);
+        }
+
+        .routine-list li:hover {
+            background: rgba(139, 95, 191, 0.15);
+            transform: translateX(5px);
+            border-left-color: var(--secondary-color);
+        }
+
+        .routine-list li i {
+            color: var(--primary-color);
+            min-width: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Routine Form */
+        .routine-form-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            border: 1px solid rgba(139, 95, 191, 0.1);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            margin: 3rem auto;
+            max-width: 900px;
+            animation: fadeIn 0.8s ease 0.2s both;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 500;
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 2px solid rgba(139, 95, 191, 0.2);
+            background-color: var(--form-bg);
+            color: var(--text-dark);
+            outline: none;
+            font-size: 1rem;
+            font-family: "Poppins", sans-serif;
+            transition: all var(--transition-speed);
+            width: 100%;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 95, 191, 0.1);
+            transform: translateY(-2px);
+            background: white;
+        }
+
+        input::placeholder {
+            color: var(--text-gray);
+        }
+
+        .form-actions {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all var(--transition-speed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            flex: 2;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: rgba(139, 95, 191, 0.1);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(139, 95, 191, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Current Routine Display */
+        .current-routine {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(139, 95, 191, 0.1);
+            display: none;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .current-routine.active {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .routine-times {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .time-item {
+            background: rgba(139, 95, 191, 0.05);
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(139, 95, 191, 0.2);
+            transition: all var(--transition-speed);
+        }
+
+        .time-item:hover {
+            background: rgba(139, 95, 191, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .time-label {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        .time-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        /* Notifications */
+        .notification-info {
+            background: rgba(139, 95, 191, 0.1);
+            border: 1px solid rgba(139, 95, 191, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--primary-color);
+        }
+
+        .notification-info i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        /* Success Message */
+        .message {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            animation: slideUp 0.5s ease;
+        }
+
+        .message.success {
+            background: rgba(72, 187, 120, 0.15);
+            border: 1px solid rgba(72, 187, 120, 0.3);
+            color: #48bb78;
+        }
+
+        .message.error {
+            background: rgba(255, 87, 87, 0.15);
+            border: 1px solid rgba(255, 87, 87, 0.3);
+            color: #ff5757;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            font-family: "Poppins", sans-serif;
+            background-color: rgba(6, 16, 37, 0.95);
+            padding-top: 3rem;
+            color: white;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(128, 247, 209, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo svg {
+            width: 180px;
+            height: 140px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 15px;
+            transition: transform var(--transition-speed);
+            filter: brightness(0.9);
+        }
+
+        .footer-logo svg:hover {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+
+        .footlogo {
+            width: 200px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .footerheading {
+            color: cyan;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .footerpara {
+            color: #ccc;
+            margin: 0.3rem 0;
+        }
+
+        .footer-col h3 {
+            color: cyan;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: cyan;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin: 0.8rem 0;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: cyan;
+            transform: translateX(5px);
+        }
+
+        .footer-col ul li a i {
+            font-size: 0.9rem;
+            width: 20px;
+        }
+
+        .social-menu ul {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-menu ul a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-menu ul a:hover {
+            background: cyan;
+            color: black;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.8rem 5%;
+            }
+            
+            .menu-icon {
+                display: flex;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 100px 2rem 2rem;
+                transition: right 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            #daysetee {
+                padding: 2rem 5% 3rem;
+            }
+            
+            #daysetee h2 {
+                font-size: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .routine-times {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 1.2rem;
+            }
+            
+            .user-logo {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .routine-section,
+            .routine-form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <a href="../index.html" class="logo">
+            <!-- SVG Logo - Daily Routine themed -->
+            <div class="logo-img">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="30" fill="url(#routineGradient)" />
+                    <path d="M20 30C20 24.4772 24.4772 20 30 20C35.5228 20 40 24.4772 40 30C40 35.5228 35.5228 40 30 40C24.4772 40 20 35.5228 20 30Z" fill="white" fill-opacity="0.9" />
+                    <!-- Clock design -->
+                    <circle cx="30" cy="30" r="12" stroke="white" stroke-width="1" fill="none" />
+                    <line x1="30" y1="22" x2="30" y2="26" stroke="#8B5FBF" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="30" y1="34" x2="30" y2="38" stroke="#8B5FBF" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="22" y1="30" x2="26" y2="30" stroke="#8B5FBF" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="34" y1="30" x2="38" y2="30" stroke="#8B5FBF" stroke-width="1.5" stroke-linecap="round" />
+                    <!-- Clock hands -->
+                    <line x1="30" y1="30" x2="30" y2="25" stroke="#36D1DC" stroke-width="2" stroke-linecap="round" />
+                    <line x1="30" y1="30" x2="35" y2="30" stroke="#36D1DC" stroke-width="2" stroke-linecap="round" />
+                    <!-- Center dot -->
+                    <circle cx="30" cy="30" r="2" fill="#36D1DC" />
+                    <defs>
+                        <linearGradient id="routineGradient" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#8B5FBF" />
+                            <stop offset="1" stop-color="#6C63FF" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <h1 class="header-title">DailyFlow</h1>
+                <div class="logo-subtitle">Smart Routine Manager</div>
+            </div>
+        </a>
+
+        <nav>
+            <div class="menu-icon" id="menuIcon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul id="navMenu">
+                <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#Footer"><i class="fas fa-info-circle"></i> About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Routine Section -->
+        <section id="daysetee">
+            <h2><i class="fas fa-calendar-alt"></i> Set Your Daily Routine</h2>
+
+            <!-- Default Routine -->
+            <div class="routine-section">
+                <h3><i class="fas fa-star"></i> Recommended Daily Routine</h3>
+                <ul class="routine-list">
+                    <li><i class="fas fa-sun"></i> Wake up early (6:00 - 7:00 AM)</li>
+                    <li><i class="fas fa-glass-water"></i> Hydrate with warm water (7:00 AM)</li>
+                    <li><i class="fas fa-running"></i> Exercise or yoga (7:15 - 8:00 AM)</li>
+                    <li><i class="fas fa-brain"></i> Meditation or mindfulness (8:00 - 8:15 AM)</li>
+                    <li><i class="fas fa-utensils"></i> Healthy breakfast (8:30 AM)</li>
+                    <li><i class="fas fa-tasks"></i> Plan your day (9:00 AM)</li>
+                    <li><i class="fas fa-briefcase"></i> Work/study session (9:30 AM - 12:30 PM)</li>
+                    <li><i class="fas fa-hamburger"></i> Nutritious lunch (12:30 - 1:00 PM)</li>
+                    <li><i class="fas fa-walking"></i> Light activity or walk (1:00 - 1:15 PM)</li>
+                    <li><i class="fas fa-laptop"></i> Second work session (1:30 - 4:30 PM)</li>
+                    <li><i class="fas fa-drumstick-bite"></i> Light dinner (7:00 - 8:00 PM)</li>
+                    <li><i class="fas fa-tv"></i> Relaxation time (8:00 - 9:00 PM)</li>
+                    <li><i class="fas fa-bed"></i> Prepare for bed (9:30 - 10:00 PM)</li>
+                </ul>
+            </div>
+
+            <!-- Customize Routine -->
+            <div class="routine-form-container">
+                <h3><i class="fas fa-sliders-h"></i> Customize Your Routine</h3>
+                <form id="routineForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="mobile"><i class="fas fa-mobile-alt"></i> Mobile Number</label>
+                            <input type="tel" id="mobile" name="mobile" required 
+                                   placeholder="+91 98765 43210"
+                                   pattern="^\+?[1-9][0-9]{7,14}$"
+                                   title="Enter a valid mobile number with country code">
+                        </div>
+
+                        <div class="form-group">
+                            <h4><i class="fas fa-sunrise"></i> Morning Schedule</h4>
+                            <label for="wakeUpTime">Wake Up Time</label>
+                            <input type="time" id="wakeUpTime" name="wakeUpTime" value="06:00">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exerciseTime">Exercise Time</label>
+                            <input type="time" id="exerciseTime" name="exerciseTime" value="07:15">
+                        </div>
+
+                        <div class="form-group">
+                            <h4><i class="fas fa-sun"></i> Afternoon Schedule</h4>
+                            <label for="lunchTime">Lunch Time</label>
+                            <input type="time" id="lunchTime" name="lunchTime" value="12:30">
+                        </div>
+
+                        <div class="form-group">
+                            <h4><i class="fas fa-moon"></i> Evening Schedule</h4>
+                            <label for="dinnerTime">Dinner Time</label>
+                            <input type="time" id="dinnerTime" name="dinnerTime" value="19:00">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bedTime">Bed Time</label>
+                            <input type="time" id="bedTime" name="bedTime" value="22:00">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-bell"></i> Set Routine & Enable Notifications
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="resetBtn">
+                            <i class="fas fa-redo"></i> Reset to Default
+                        </button>
+                    </div>
+                </form>
+
+                <div class="notification-info">
+                    <i class="fas fa-info-circle"></i>
+                    <p>We'll send you SMS reminders to help you stay on track with your routine. Make sure to enable notifications!</p>
+                </div>
+
+                <div id="message" class="message"></div>
+            </div>
+
+            <!-- Current Routine Display -->
+            <div class="current-routine" id="currentRoutine">
+                <h3><i class="fas fa-clock"></i> Your Current Routine</h3>
+                <div class="routine-times">
+                    <div class="time-item">
+                        <span class="time-label">Wake Up</span>
+                        <span class="time-value" id="displayWakeUp">06:00</span>
+                    </div>
+                    <div class="time-item">
+                        <span class="time-label">Exercise</span>
+                        <span class="time-value" id="displayExercise">07:15</span>
+                    </div>
+                    <div class="time-item">
+                        <span class="time-label">Lunch</span>
+                        <span class="time-value" id="displayLunch">12:30</span>
+                    </div>
+                    <div class="time-item">
+                        <span class="time-label">Dinner</span>
+                        <span class="time-value" id="displayDinner">19:00</span>
+                    </div>
+                    <div class="time-item">
+                        <span class="time-label">Bed Time</span>
+                        <span class="time-value" id="displayBedTime">22:00</span>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; color: #80f7d1;">
+                    <i class="fas fa-sync-alt"></i> Your routine is saved locally. You can modify it anytime.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="Footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Logo and Info Column -->
+                <div class="footer-col footer-logo">
+                <!-- SVG NourishSoul Logo -->
+                <svg width="180" height="140" viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="180" height="140" rx="15" fill="url(#footerGradient)" />
+                    <circle cx="90" cy="50" r="25" fill="white" fill-opacity="0.9" />
+                    <path d="M75 50C75 46.134 78.134 43 82 43H98C101.866 43 105 46.134 105 50V70C105 73.866 101.866 77 98 77H82C78.134 77 75 73.866 75 70V50Z" fill="white" />
+                    <path d="M82 53C81.4477 53 81 53.4477 81 54V66C81 66.5523 81.4477 67 82 67H98C98.5523 67 99 66.5523 99 66V54C99 53.4477 98.5523 53 98 53H82Z" fill="#8B5FBF" />
+                    <path d="M90 58C90.5523 58 91 58.4477 91 59V61C91 61.5523 90.5523 62 90 62C89.4477 62 89 61.5523 89 61V59C89 58.4477 89.4477 58 90 58Z" fill="#36D1DC" />
+                    <path d="M70 80C70 81.6569 71.3431 83 73 83H107C108.657 83 110 81.6569 110 80C110 78.3431 108.657 77 107 77H73C71.3431 77 70 78.3431 70 80Z" fill="white" />
+                    <text x="90" y="105" text-anchor="middle" fill="white" font-family="Poppins" font-size="16" font-weight="600">NourishSoul</text>
+                    <text x="90" y="125" text-anchor="middle" fill="#36D1DC" font-family="Poppins" font-size="12" font-weight="500">Mindful Nutrition</text>
+                    <defs>
+                        <linearGradient id="footerGradient" x1="0" y1="0" x2="180" y2="140" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#0F0F23" />
+                            <stop offset="1" stop-color="#1A1A2E" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="footercontent">
+                    <h2 class="footerheading">NourishSoul</h2>
+                    <p class="footerpara"><i class="fas fa-heart"></i> Go stress free</p>
+                    <p class="footerpara"><i class="fas fa-leaf"></i> Live healthy</p>
+                </div>
+            </div>
+
+                <!-- Address Column -->
+                <div class="footer-col">
+                    <h3><i class="fas fa-map-marker-alt"></i> ADDRESS</h3>
+                    <p><i class="fas fa-university"></i> IILM University</p>
+                    <p><i class="fas fa-city"></i> Greater Noida, UP</p>
+                    <p><i class="fas fa-flag"></i> India</p>
+                </div>
+
+                <!-- Services Column -->
+                <div class="footer-col">
+                    <h3><i class="fas fa-concierge-bell"></i> SERVICES</h3>
+                    <ul>
+                        <li><a href="meal.html"><i class="fas fa-utensils"></i> Meal Planning</a></li>
+                        <li><a href="dayseter.html"><i class="fas fa-calendar-day"></i> Routine Manager</a></li>
+                        <li><a href="trainer.html"><i class="fas fa-dumbbell"></i> Live Trainer</a></li>
+                        <li><a href="physician.html"><i class="fas fa-user-md"></i> Physicians</a></li>
+                    </ul>
+                </div>
+
+                <!-- Therapy Column -->
+                <div class="footer-col">
+                    <h3><i class="fas fa-hands-helping"></i> THERAPY</h3>
+                    <ul>
+                        <li><a href="audioTherapy.html"><i class="fas fa-music"></i> Audio Therapy</a></li>
+                        <li><a href="readingTherapy.html"><i class="fas fa-book"></i> Reading Therapy</a></li>
+                        <li><a href="yogatherapy.html"><i class="fas fa-spa"></i> Yoga Therapy</a></li>
+                        <li><a href="talkingTherapy.html"><i class="fas fa-comments"></i> Talking Therapy</a></li>
+                        <li><a href="childTherapy.html"><i class="fas fa-child"></i> Child Therapy</a></li>
+                        <li><a href="spirituality.html"><i class="fas fa-pray"></i> Spiritual Therapy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacts Column -->
+                <div class="footer-col">
+                    <h3><i class="fas fa-address-book"></i> CONTACTS</h3>
+                    <div class="social-menu">
+                        <ul>
+                            <a href="https://github.com/" target="_blank" aria-label="GitHub">
+                                <li><i class="fab fa-github"></i></li>
+                            </a>
+                            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
+                                <li><i class="fab fa-linkedin-in"></i></li>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+                                <li><i class="fab fa-twitter"></i></li>
+                            </a>
+                            <a href="https://instagram.com/" target="_blank" aria-label="Instagram">
+                                <li><i class="fab fa-instagram"></i></li>
+                            </a>
+                        </ul>
+                    </div>
+                    <p style="margin-top: 1rem; color: #ccc; font-size: 0.9rem;">
+                        <i class="fas fa-envelope"></i> contact@healer.com
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Healer - Digital Mental Health Platform. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for better mental health</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuIcon = document.getElementById('menuIcon');
+        const navMenu = document.getElementById('navMenu');
+
+        menuIcon.addEventListener('click', () => {
+            menuIcon.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuIcon.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Form handling with local storage
+        const routineForm = document.getElementById('routineForm');
+        const resetBtn = document.getElementById('resetBtn');
+        const currentRoutine = document.getElementById('currentRoutine');
+        const message = document.getElementById('message');
+        
+        // Load saved routine from localStorage
+        function loadSavedRoutine() {
+            const savedRoutine = JSON.parse(localStorage.getItem('userRoutine'));
+            if (savedRoutine) {
+                document.getElementById('mobile').value = savedRoutine.mobile || '';
+                document.getElementById('wakeUpTime').value = savedRoutine.wakeUpTime || '06:00';
+                document.getElementById('exerciseTime').value = savedRoutine.exerciseTime || '07:15';
+                document.getElementById('lunchTime').value = savedRoutine.lunchTime || '12:30';
+                document.getElementById('dinnerTime').value = savedRoutine.dinnerTime || '19:00';
+                document.getElementById('bedTime').value = savedRoutine.bedTime || '22:00';
+                
+                updateCurrentRoutineDisplay();
+                currentRoutine.classList.add('active');
+            }
+        }
+        
+        // Update current routine display
+        function updateCurrentRoutineDisplay() {
+            document.getElementById('displayWakeUp').textContent = 
+                document.getElementById('wakeUpTime').value || '06:00';
+            document.getElementById('displayExercise').textContent = 
+                document.getElementById('exerciseTime').value || '07:15';
+            document.getElementById('displayLunch').textContent = 
+                document.getElementById('lunchTime').value || '12:30';
+            document.getElementById('displayDinner').textContent = 
+                document.getElementById('dinnerTime').value || '19:00';
+            document.getElementById('displayBedTime').textContent = 
+                document.getElementById('bedTime').value || '22:00';
+        }
+        
+        // Show message
+        function showMessage(text, type = 'success') {
+            message.textContent = text;
+            message.className = `message ${type}`;
+            message.style.display = 'flex';
+            
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Validate mobile number
+        function validateMobileNumber(mobile) {
+            const mobileRegex = /^\+?[1-9][0-9]{7,14}$/;
+            return mobileRegex.test(mobile.replace(/\s/g, ''));
+        }
+        
+        // Form submit handler
+        routineForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const mobile = document.getElementById('mobile').value;
+            const wakeUpTime = document.getElementById('wakeUpTime').value;
+            const exerciseTime = document.getElementById('exerciseTime').value;
+            const lunchTime = document.getElementById('lunchTime').value;
+            const dinnerTime = document.getElementById('dinnerTime').value;
+            const bedTime = document.getElementById('bedTime').value;
+            
+            // Validate mobile number
+            if (!validateMobileNumber(mobile)) {
+                showMessage('Please enter a valid mobile number with country code (e.g., +91 9876543210)', 'error');
+                return;
+            }
+            
+            // Validate times
+            if (!wakeUpTime || !exerciseTime || !lunchTime || !dinnerTime || !bedTime) {
+                showMessage('Please fill in all time fields', 'error');
+                return;
+            }
+            
+            // Save to localStorage
+            const routineData = {
+                mobile,
+                wakeUpTime,
+                exerciseTime,
+                lunchTime,
+                dinnerTime,
+                bedTime,
+                savedAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('userRoutine', JSON.stringify(routineData));
+            
+            // Update display
+            updateCurrentRoutineDisplay();
+            currentRoutine.classList.add('active');
+            
+            // Show success message
+            showMessage(`✅ Your routine has been saved! We'll send SMS reminders to ${mobile}. Next reminder: ${wakeUpTime} AM`, 'success');
+            
+            // Log to console (for debugging)
+            console.log('Routine saved:', routineData);
+            
+            // Simulate SMS notification (in a real app, this would call a backend API)
+            setTimeout(() => {
+                console.log(`📱 [SMS Simulation] Reminder sent to ${mobile}: "Good morning! Time to wake up and start your day!"`);
+            }, 1000);
+        });
+        
+        // Reset button handler
+        resetBtn.addEventListener('click', function() {
+            if (confirm('Reset all fields to default values?')) {
+                routineForm.reset();
+                localStorage.removeItem('userRoutine');
+                currentRoutine.classList.remove('active');
+                showMessage('Routine reset to default values', 'success');
+            }
+        });
+        
+        // Update display when time inputs change
+        document.querySelectorAll('input[type="time"]').forEach(input => {
+            input.addEventListener('change', updateCurrentRoutineDisplay);
+        });
+        
+        // Load saved routine on page load
+        document.addEventListener('DOMContentLoaded', loadSavedRoutine);
+        
+        // Initialize current routine display
+        updateCurrentRoutineDisplay();
+    </script>
+</body>
+</html>

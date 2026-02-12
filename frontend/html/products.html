@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness Store - Product Purchase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    #cart-total {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+
+    .cart-controls button {
+      padding: 2px 8px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cart-controls span {
+      margin: 0 8px;
+      font-weight: bold;
+    }
+
+    #cart-actions {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #cart-actions button {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #cart-actions button.checkout {
+      background-color: #28a745;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 30px;
+    }
+
+    input,
+    select {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .product-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .product-card {
+      width: 250px;
+      margin: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .product-card h4 {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .product-card p {
+      color: #555;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .product-card button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .product-card button:hover {
+      background-color: #0056b3;
+    }
+
+    #productViewModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 25px;
+      cursor: pointer;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 30px;">
+      <h1>🏋️‍♂️ Fitness Product Purchase</h1>
+      <a href="#cart"
+        style="color: white; font-size: 16px; text-decoration: none; background: #0056b3; padding: 10px 20px; border-radius: 6px;">
+        🛒 Your Cart
+      </a>
+    </div>
+  </header>
+
+  <!-- Controls -->
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search products..." oninput="renderAllProducts()" />
+    <select id="categoryFilter" onchange="renderAllProducts()">
+      <option value="all">All Categories</option>
+      <option value="protein">Protein</option>
+      <option value="gym">Gym Equipment</option>
+      <option value="track">Track & Field</option>
+      <option value="weightLoss">Weight Loss Equipment</option>
+    </select>
+  </div>
+
+  <!-- Product View Modal -->
+  <div id="productViewModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">×</span>
+      <h3 id="modalTitle"></h3>
+      <img id="modalImage" src="" alt="" />
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <!-- Product Section -->
+  <div class="product-section" id="allProducts"></div>
+
+  <!-- Cart -->
+  <div id="cart">
+    <h3>Your Cart</h3>
+    <ul id="cartList"></ul>
+    <div id="cart-total">Total: ₹0</div>
+    <div id="cart-actions">
+      <button onclick="removeAllItems()">Remove All</button>
+      <button class="checkout" onclick="checkout()">Checkout</button>
+    </div>
+    <!-- inside #token-section -->
+    <div id="token-section" style="margin-top: 15px; text-align: center;">
+      <p>Your Tokens: <span id="userTokens">0</span></p>
+      <input type="number" id="applyTokens" placeholder="Enter tokens to use" min="0" />
+      <button onclick="applyTokens()">Apply Tokens</button>
+      <button onclick="removeAppliedTokens()">Remove Tokens</button>
+    </div>
+  </div>
+
+  <script>
+    const allProducts = [
+      { name: 'Whey Protein', category: 'protein', image: 'https://muscletransform.in/wp-content/uploads/2021/02/1.png', desc: 'High quality muscle recovery protein', price: 1499 },
+      { name: 'Mass Gainer', category: 'protein', image: 'https://m.media-amazon.com/images/I/71f+UBXh2vL._AC_UF1000,1000_QL80_.jpg', desc: 'Supports healthy weight gain and strength', price: 1299 },
+      { name: 'Dumbbell Set', category: 'gym', image: 'https://m.media-amazon.com/images/I/61MhKvTI7TL._AC_UF894,1000_QL80_.jpg', desc: 'Adjustable dumbbells for full-body workouts', price: 1999 },
+      { name: 'Bench Press', category: 'gym', image: 'https://trainingstation.co.uk/cdn/shop/articles/Jordan_flat_bed_chest_press_1157x.png?v=1725100070', desc: 'Heavy-duty bench press set', price: 4999 },
+      { name: 'Running Shoes', category: 'track', image: 'https://bersache.com/cdn/shop/files/WhatsAppImage2024-05-08at13.24.46.jpg?v=1741007464&width=1080', desc: 'Comfortable shoes for speed & grip', price: 899 },
+      { name: 'Resistance Bands', category: 'track', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW9Gpyo2JcXglKv8e14N7lSdkcAOBUsvaS8w&s', desc: 'Improve strength and flexibility', price: 599 },
+      { name: 'Treadmill', category: 'weightLoss', image: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/treadmill/s/0/5/3-h-p-treadmill-for-home-gym-cardio-fitness-3-73-5-without-original-imagp7wfshbzjxft.jpeg?q=90&crop=false', desc: 'Foldable smart treadmill for home workouts', price: 15999 },
+      { name: 'Skipping Rope', category: 'weightLoss', image: 'https://m.media-amazon.com/images/I/71l2-gWOnpL.jpg', desc: 'High-speed jump rope for fat burning', price: 299 }
+    ];
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let appliedTokens = 0;
+    let userTokens = 0;
+
+    // Render products
+    function renderAllProducts() {
+      const container = document.getElementById('allProducts');
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const selectedCategory = document.getElementById('categoryFilter').value;
+      container.innerHTML = '';
+
+      const filtered = allProducts.filter(p =>
+        p.name.toLowerCase().includes(searchTerm) &&
+        (selectedCategory === 'all' || p.category === selectedCategory)
+      );
+
+      filtered.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <h4>${p.name}</h4>
+        <p>${p.desc}</p>
+        <p><strong>Price: ₹${p.price}</strong></p>
+        <button onclick="viewProduct('${p.name}', '${p.image}', '${p.desc}')">View</button>
+        <button onclick="addToCart('${p.name}')">Add to Cart</button>
+        <button onclick="buyNow('${p.name}')">Buy Now</button>
+      `;
+        container.appendChild(card);
+      });
+    }
+
+    // Cart functions
+    function addToCart(name) {
+      const product = allProducts.find(p => p.name === name);
+      const cartItem = cart.find(item => item.name === name);
+      if (cartItem) {
+        cartItem.quantity += 1;
+      } else {
+        cart.push({ name: product.name, price: product.price, quantity: 1 });
+      }
+      updateCart();
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function changeQty(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCart();
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function removeAllItems() {
+      if (appliedTokens > 0) {
+        refundTokens(appliedTokens);
+      }
+      cart = [];
+      appliedTokens = 0;
+      updateCart();
+      localStorage.removeItem('cart');
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById('cartList');
+      const totalDiv = document.getElementById('cart-total');
+      cartList.innerHTML = '';
+
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const li = document.createElement('li');
+        li.innerHTML = `
+        ${item.name} - ₹${item.price} 
+        <div class="cart-controls">
+          <button onclick="changeQty(${index}, -1)">–</button>
+          <span>${item.quantity}</span>
+          <button onclick="changeQty(${index}, 1)">+</button>
+        </div>
+      `;
+        cartList.appendChild(li);
+      });
+
+      const discountedTotal = Math.max(0, total - appliedTokens);
+      totalDiv.textContent = `Total: ₹${discountedTotal} (Saved ₹${appliedTokens})`;
+
+      // If cart is empty, auto remove tokens
+      if (cart.length === 0 && appliedTokens > 0) {
+        refundTokens(appliedTokens);
+        appliedTokens = 0;
+      }
+    }
+
+    // Checkout
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      if (confirm("Proceed to checkout?")) {
+        window.location.href = "payment_gateway.html";
+      }
+    }
+
+    function buyNow(name) {
+      if (confirm(`Buy ${name} now?`)) {
+        window.location.href = "payment_gateway.html";
+      }
+    }
+
+    // Modal
+    function viewProduct(name, image, desc) {
+      document.getElementById('modalTitle').textContent = name;
+      document.getElementById('modalImage').src = image;
+      document.getElementById('modalDescription').textContent = desc;
+      document.getElementById('productViewModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('productViewModal').style.display = 'none';
+    }
+
+    // Tokens
+    function applyTokens() {
+      const input = parseInt(document.getElementById('applyTokens').value);
+      if (isNaN(input) || input <= 0) {
+        alert("Enter a valid token amount!");
+        return;
+      }
+      if (input > userTokens) {
+        alert("Not enough tokens!");
+        return;
+      }
+
+      fetch('/api/use_tokens', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ amount: input })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            appliedTokens += input;
+            userTokens = data.remaining_tokens;
+            document.getElementById('userTokens').textContent = userTokens;
+            updateCart();
+          } else {
+            alert(data.error || "Error applying tokens");
+          }
+        });
+    }
+
+    function removeAppliedTokens() {
+      if (appliedTokens <= 0) {
+        alert("No tokens applied.");
+        return;
+      }
+      refundTokens(appliedTokens);
+      appliedTokens = 0;
+      updateCart();
+    }
+
+    function refundTokens(amount) {
+      fetch('/api/refund_tokens', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ amount })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            userTokens = data.tokens;
+          } else {
+            userTokens += amount;
+          }
+          document.getElementById('userTokens').textContent = userTokens;
+        })
+        .catch(() => {
+          userTokens += amount;
+          document.getElementById('userTokens').textContent = userTokens;
+        });
+    }
+
+    // Init
+    fetch('/api/tokens', { credentials: 'include' })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          userTokens = data.tokens;
+          document.getElementById('userTokens').textContent = userTokens;
+        }
+      });
+
+    renderAllProducts();
+    updateCart();
+  </script>
+
+</body>
+
+</html>

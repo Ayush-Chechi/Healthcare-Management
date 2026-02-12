@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Plans by Age Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        :root {
+            --primary-color: #8B5FBF;
+            --secondary-color: #6C63FF;
+            --accent-color: #36D1DC;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --shadow: 0 10px 30px rgba(139, 95, 191, 0.15);
+        }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8e9ff 100%);
+            color: #2d2d2d; 
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        header h1 {
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 95, 191, 0.3);
+        }
+        
+        .age-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .age-group-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .age-group-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .age-group-header {
+            background: var(--gradient);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .age-group-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent);
+            pointer-events: none;
+        }
+        
+        .age-range {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .age-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .age-group-content {
+            padding: 25px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .age-description {
+            margin-bottom: 20px;
+        }
+        
+        .age-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .age-description p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .nutrients {
+            background: rgba(139, 95, 191, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        
+        .nutrients strong {
+            color: var(--primary-color);
+        }
+        
+        .view-plan-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        
+        .view-plan-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(139, 95, 191, 0.3);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 50px 0 30px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nutrition-info {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .nutrition-card {
+            background: linear-gradient(135deg, rgba(139, 95, 191, 0.1), rgba(108, 99, 255, 0.1));
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .nutrition-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .nutrition-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-top: 50px;
+            color: #666;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        #age-5-10,
+        #age-11-20,
+        #age-21-40,
+        #age-40-plus {
+            scroll-margin-top: 100px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .age-groups {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .nutrition-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-btn">← Back to Home</a>
+            <h1>Meal Plans by Age Group</h1>
+            <p>Personalized nutrition plans tailored for your age and lifestyle</p>
+        </header>
+        
+        <div class="age-groups">
+            <!-- 5-10 Years -->
+            <div class="age-group-card" id="age-5-10">
+                <div class="age-group-header">
+                    <div class="age-range">5-10 Years</div>
+                    <div class="age-label">Childhood Growth</div>
+                </div>
+                <div class="age-group-content">
+                    <div class="age-description">
+                        <h3>Development & Growth</h3>
+                        <p>Children need balanced nutrition for healthy development and growth.</p>
+                        <div class="nutrients">
+                            <strong>Focus:</strong> Calcium, Iron, Protein, Vitamins A & C
+                        </div>
+                        <div class="nutrients">
+                            <strong>Daily Calories:</strong> 1400-1800 kcal
+                        </div>
+                    </div>
+                    <a href="../age-meal-plans/5-10-details.html" class="view-plan-btn">
+                        <i class="fas fa-arrow-right"></i> View 7-Day Plan
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 11-20 Years -->
+            <div class="age-group-card" id="age-11-20">
+                <div class="age-group-header">
+                    <div class="age-range">11-20 Years</div>
+                    <div class="age-label">Adolescence & Growth</div>
+                </div>
+                <div class="age-group-content">
+                    <div class="age-description">
+                        <h3>Rapid Growth Phase</h3>
+                        <p>Teenagers require increased nutrition for growth spurts and activity.</p>
+                        <div class="nutrients">
+                            <strong>Focus:</strong> Protein, Calcium, Iron, B Vitamins
+                        </div>
+                        <div class="nutrients">
+                            <strong>Daily Calories:</strong> 2000-2400 kcal
+                        </div>
+                    </div>
+                    <a href="../age-meal-plans/11-20-details.html" class="view-plan-btn">
+                        <i class="fas fa-arrow-right"></i> View 7-Day Plan
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 21-40 Years -->
+            <div class="age-group-card" id="age-21-40">
+                <div class="age-group-header">
+                    <div class="age-range">21-40 Years</div>
+                    <div class="age-label">Active Adulthood</div>
+                </div>
+                <div class="age-group-content">
+                    <div class="age-description">
+                        <h3>Energy & Productivity</h3>
+                        <p>Maintain optimal health with balanced nutrition and regular activity.</p>
+                        <div class="nutrients">
+                            <strong>Focus:</strong> Lean Protein, Fiber, Antioxidants
+                        </div>
+                        <div class="nutrients">
+                            <strong>Daily Calories:</strong> 2000-2500 kcal
+                        </div>
+                    </div>
+                    <a href="../age-meal-plans/21-40-details.html" class="view-plan-btn">
+                        <i class="fas fa-arrow-right"></i> View 7-Day Plan
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 40+ Years -->
+            <div class="age-group-card" id="age-40-plus">
+                <div class="age-group-header">
+                    <div class="age-range">40+ Years</div>
+                    <div class="age-label">Mature Wellness</div>
+                </div>
+                <div class="age-group-content">
+                    <div class="age-description">
+                        <h3>Heart Health Focus</h3>
+                        <p>Support cardiovascular health and maintain bone density.</p>
+                        <div class="nutrients">
+                            <strong>Focus:</strong> Omega-3, Fiber, Antioxidants
+                        </div>
+                        <div class="nutrients">
+                            <strong>Daily Calories:</strong> 1800-2200 kcal
+                        </div>
+                    </div>
+                    <a href="../age-meal-plans/40-plus-details.html" class="view-plan-btn">
+                        <i class="fas fa-arrow-right"></i> View 7-Day Plan
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <section class="nutrition-info">
+            <h2 class="section-title">General Nutrition Guidelines</h2>
+            <div class="nutrition-grid">
+                <div class="nutrition-card">
+                    <h4><i class="fas fa-carrot"></i> Fruits & Vegetables</h4>
+                    <p>At least 5 portions daily. Rich in vitamins, minerals, and fiber for overall health.</p>
+                </div>
+                <div class="nutrition-card">
+                    <h4><i class="fas fa-egg"></i> Proteins</h4>
+                    <p>Include lean meats, fish, eggs, beans, and nuts. Essential for muscle maintenance.</p>
+                </div>
+                <div class="nutrition-card">
+                    <h4><i class="fas fa-bread-slice"></i> Whole Grains</h4>
+                    <p>Choose brown rice, oats, and whole wheat. Provide sustained energy and fiber.</p>
+                </div>
+                <div class="nutrition-card">
+                    <h4><i class="fas fa-glass-water"></i> Hydration</h4>
+                    <p>Drink 8-10 glasses of water daily. Essential for all bodily functions.</p>
+                </div>
+                <div class="nutrition-card">
+                    <h4><i class="fas fa-apple-alt"></i> Dairy Products</h4>
+                    <p>Include milk, yogurt, and cheese. Important source of calcium and protein.</p>
+                </div>
+                <div class="nutrition-card">
+                    <h4><i class="fas fa-heart"></i> Healthy Fats</h4>
+                    <p>Olive oil, avocados, nuts. Support heart health and nutrient absorption.</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p><i class="fas fa-heart"></i> Nourish your body, nurture your soul</p>
+            <p>Meal plans created with care for your wellbeing | <a href="../meal.html">Back to Meal Planning</a></p>
+        </footer>
+    </div>
+    
+    <script>
+        // Cross-file data fetching system
+        window.mealPlansData = {
+            init: function() {
+                this.loadMealData();
+                this.setupNavigation();
+            },
+            
+            loadMealData: function() {
+                // Load meal plans data from JSON
+                fetch('../resources/meals-data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        window.mealPlansData.data = data;
+                        this.updatePageWithData();
+                    })
+                    .catch(error => console.log('Data file not found yet, using static content'));
+            },
+            
+            updatePageWithData: function() {
+                if (!this.data) return;
+                const ageGroups = document.querySelectorAll('.age-group-card');
+                ageGroups.forEach((card, index) => {
+                    const ageKey = Object.keys(this.data)[index];
+                    if (this.data[ageKey]) {
+                        const data = this.data[ageKey];
+                        // Update card with data
+                        const desc = card.querySelector('.age-description p');
+                        if (desc) desc.textContent = data.description;
+                    }
+                });
+            },
+            
+            setupNavigation: function() {
+                // Store active age group for cross-file navigation
+                const ageGroups = ['5-10', '11-20', '21-40', '40+'];
+                ageGroups.forEach(age => {
+                    const link = document.querySelector(`a[href*="${age}-details.html"]`);
+                    if (link) {
+                        link.addEventListener('click', function(e) {
+                            sessionStorage.setItem('activeAgeGroup', age);
+                        });
+                    }
+                });
+            }
+        };
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            window.mealPlansData.init();
+        });
+    </script>
+</body>
+</html>

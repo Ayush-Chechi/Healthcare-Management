@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yoga Therapy | Digital Health Support</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f9f4;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #6a994e, #a7c957);
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.1rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #386641;
+    }
+
+    /* Grid Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .card i {
+      font-size: 3rem;
+      color: #6a994e;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      color: #222;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Quote Banner */
+    .quote {
+      background: #a7c957;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 1.3rem;
+      font-style: italic;
+      border-radius: 15px;
+      margin: 50px auto;
+      max-width: 900px;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #a7c957;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header data-aos="fade-down">
+    <h1>Yoga Therapy</h1>
+    <p>Find peace, balance, and strength through mindful yoga practices</p>
+  </header>
+
+  <!-- Yoga Benefits Section -->
+  <section class="container" id="benefits">
+    <h2 class="section-title" data-aos="fade-up">🌿 Benefits of Yoga</h2>
+    <div class="grid">
+      <div class="card" data-aos="zoom-in">
+        <i class="fa-solid fa-spa"></i>
+        <h3>Stress Relief</h3>
+        <p>Yoga calms the nervous system and reduces anxiety, bringing a sense of peace and relaxation.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h3>Improves Health</h3>
+        <p>Boosts immunity, enhances blood circulation, and promotes overall well-being.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fa-solid fa-dumbbell"></i>
+        <h3>Strength & Flexibility</h3>
+        <p>Strengthens muscles, improves flexibility, and enhances body posture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types of Yoga Section -->
+  <section class="container" id="types">
+    <h2 class="section-title" data-aos="fade-up">🧘 Types of Yoga Practices</h2>
+    <div class="grid">
+      <div class="card" data-aos="zoom-in">
+        <i class="fa-solid fa-fire"></i>
+        <h3>Hatha Yoga</h3>
+        <p>Gentle practice focusing on basic poses and breathing techniques.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Vinyasa Flow</h3>
+        <p>Dynamic practice linking breath with movement, building energy and focus.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fa-solid fa-moon"></i>
+        <h3>Yin Yoga</h3>
+        <p>Slow-paced practice with longer holds for deep relaxation and flexibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inspirational Quote -->
+  <div class="quote" data-aos="fade-up">
+    "Yoga is the journey of the self, through the self, to the self." – Bhagavad Gita
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Digital Health Support | <a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

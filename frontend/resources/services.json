@@ -1,0 +1,30 @@
+[
+  {
+    "id": "r1",
+    "title": "Meal Planning",
+    "category": "Meal",
+    "description": "Sometimes a good meal can help a lot. Structure the meal for the day based on the diet.",
+    "url": "html/meal.html"
+  },
+  {
+    "id": "r2",
+    "title": "Routine Management",
+    "category": "Routine",
+    "description": "Structure the daily routine to utilize free time for exercise and activities.",
+    "url": "html/routine.html"
+  },
+  {
+    "id": "r3",
+    "title": "Physician Consultation",
+    "category": "Physician",
+    "description": "A quick guide from our Physicians to provide the best solution possible.",
+    "url": "html/physician.html"
+  },
+  {
+    "id": "r4",
+    "title": "Product Store",
+    "category": "Products",
+    "description": "Buy books, guides, and equipment for yoga and exercises.",
+    "url": "html/products.html"
+  }
+]

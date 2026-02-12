@@ -1,0 +1,30 @@
+[
+  {
+    "id": "r1",
+    "title": "Audio Therapy",
+    "description": "Listening to music & other audio files often enlightens our mood.",
+    "url": "html/audio.html",
+    "category": "Audio"
+  },
+  {
+    "id": "r2",
+    "title": "Reading Therapy",
+    "description": "Motivational quotes and books can help us to divert and change our mood.",
+    "url": "html/reading.html",
+    "category": "Reading"
+  },
+  {
+    "id": "r3",
+    "title": "Yoga Therapy",
+    "description": "Yoga and exercise plays a very important role in our lives.",
+    "url": "html/yoga.html",
+    "category": "Yoga"
+  },
+  {
+    "id": "r4",
+    "title": "Spiritual Therapy",
+    "description": "Helps you to become more mindful in your thinking.",
+    "url": "html/spiritual.html",
+    "category": "Spiritual"
+  }
+]

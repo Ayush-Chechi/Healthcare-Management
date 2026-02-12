@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Digital Mental Health — Student Support</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <!-- Landing (before login) -->
+  <div id="landing" class="landing">
+    <header class="hero">
+      <h1 class="banner">
+        <img src="images/Healer-unscreen.gif" alt="banner" class="banner_img" />Healer - <p class="banner_p">A bridge to
+          mental healing</p>
+      </h1>
+      <nav class="hero-nav container">
+        <div class="brand"></div>
+        <div class="hero-actions">
+          <button id="openConsultantLogin" class="btn btn-outline">Consultant Login</button>
+          <button id="openLogin" class="btn btn-outline">Login</button>
+          <button id="openSignup" class="btn btn-primary">Sign Up</button>
+        </div>
+      </nav>
+    </header>
+    <main class="container hero-content">
+      <section class="intro card">
+        <h2 data-i18n="whatWeDo">What we do</h2>
+        <p data-i18n="whatWeDoDesc">We provide stigma-free, accessible mental health support for students: AI-guided
+          first-aid, confidential
+          counselling booking, psychoeducational resources in regional languages, peer support, mood tracking, and
+          anonymous analytics to help institutions respond.</p>
+        <div class="features">
+          <div class="feat card"><img src="images/AI chat.png" alt="" />
+            <h4>AI Chat</h4>
+            <p>Immediate supportive responses and coping tips.</p>
+          </div>
+          <div class="feat card"><img src="images/Peer.png" alt="" />
+            <h4>Peer Forum</h4>
+            <p>Share and support fellow students in a moderated environment.</p>
+          </div>
+          <div class="feat card"><img src="images/Mood.png" alt="" />
+            <h4>Mood Tracker</h4>
+            <p>Log daily mood and visualise trends.</p>
+          </div>
+          <div class="feat card"><img src="images/Booking.png" alt="" />
+            <h4>Confidential Booking</h4>
+            <p>We provide an online or offline consultant booking.</p>
+          </div>
+          <div class="feat card"><img src="images/email.png" alt="" />
+            <h4>Regular Updates</h4>
+            <p>A time to time email suggestions to the students to keep track of their mental state.</p>
+          </div>
+        </div>
+        <!-- <p class="muted">Prototype — not a substitute for professional care. In crisis, contact local emergency services
+          or a helpline.</p> -->
+      </section>
+      <section class="intro card">
+        <h2 data-i18n="introTitle">Our Services</h2>
+        <p data-i18n="introDesc">We provide a holistic range of student-centered wellness services designed to nurture
+          both mind and body.
+          From yoga sessions and guided audio practices to therapeutic readings and spiritual therapies, you’ll find
+          tools to restore balance.<br>Our meal planning and routine manager help you build healthier daily habits,
+          while physician consultations and mental health diagnosis ensure professional support when you need it most.
+        </p>
+        <div class="features">
+          <div class="feat card"><img src="images/yoga.png" alt="" />
+            <h4>Yoga Therapy</h4>
+            <p>Yoga and exercise plays a very important role in our lives.</p>
+          </div>
+          <div class="feat card"><img src="images/audio.png" alt="" />
+            <h4>Audio Therapy</h4>
+            <p>Listening to music & other audio files often enlightens our mood.</p>
+          </div>
+          <div class="feat card"><img src="images/reading.png" alt="" />
+            <h4>Reading Therapy</h4>
+            <p>Motivational quotes and books can help us to divert and change our mood.</p>
+          </div>
+          <div class="feat card"><img src="images/spiritualtherapy.jpg" alt="" />
+            <h4>Spiritual Therapy</h4>
+            <p>Helps you to become more mindful in your thinking.</p>
+          </div>
+          <div class="feat card"><img src="images/meal.jpg" alt="" />
+            <h4>Meal Planning</h4>
+            <p>Good meal is the first step for a healthy body.</p>
+          </div>
+          <div class="feat card"><img src="images/r.jpg" alt="" />
+            <h4>Routine Manager</h4>
+            <p>A daily routine helps you maintain a healthy lifestyle and work schedule.</p>
+          </div>
+          <div class="feat card"><img src="images/Physician.jpg" alt="" />
+            <h4>Physician Consultation</h4>
+            <p>Professional medical consultation and tailored treatment plans for your health concerns.</p>
+          </div>
+          <div class="feat card"><img src="images/diagnosis.png" alt="" />
+            <h4>Diagnosis</h4>
+            <p>A simaple QnA based diagnosis to detect the mental state of the students.</p>
+          </div>
+        </div>
+        <p class="muted" data-i18n="prototypeNote">Prototype — not a substitute for professional care. In crisis,
+          contact local emergency services
+          or a helpline.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- App (after login) -->
+  <div id="app" class="app" style="display:none">
+    <header class="site-header">
+      <div class="container nav-row">
+        <div class="nav-left">
+          <div class="brand" data-i18n="brand">Digital Mental Health</div>
+        </div>
+        <div class="nav-center">
+          <a href="#chat" class="nav-link" data-i18n="aiChat">AI Chat</a>
+          <a href="#mood" class="nav-link" data-i18n="moodTracker">Mood Tracker</a>
+          <a href="#book" class="nav-link" data-i18n="booking">Booking</a>
+          <a href="#resources" class="nav-link" data-i18n="resources">Resources</a>
+          <a href="#therapies" class="nav-link" data-i18n="therapies">Therapies</a>
+          <a href="#services" class="nav-link" data-i18n="services">Products/ Services</a>
+          <a href="#forum" class="nav-link" data-i18n="forum">Peer Forum</a>
+        </div>
+        <!-- In index.html -->
+        <div class="nav-right">
+          <select id="languageSelect" class="btn btn-outline">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+          </select>
+          <button id="openProfile" class="btn btn-ghost profile-btn" data-i18n="dashboard">Dashboard</button>
+          <button id="logoutBtn" class="btn btn-outline" data-i18n="signOut">Sign Out</button>
+          <div id="token-badge" class="token-badge">
+            Tokens: <span id="token-count">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container app-main">
+      <section id="chat" class="card">
+        <h2 data-i18n="aiChatTitle">AI-guided First-Aid Chat</h2>
+        <div id="chat-box" class="chat-box"></div>
+        <form id="chat-form" class="row"><input id="chat-input" data-i18n="aiChatPlaceholder"
+            placeholder="Describe how you're feeling..." autocomplete="off" /><button class="btn btn-primary"
+            type="submit">Send</button></form>
+      </section>
+
+      <section id="mood" class="card">
+        <h2 data-i18n="moodTrackerTitle">Mood Tracker</h2>
+        <div id="daily-tip" class="tip" data-i18n="moodTip">Loading today's wellness tip...</div>
+        <form id="mood-form" class="mood-form">
+          <label data-i18n="moodLabel">Select mood (1 = low — 5 = high)</label>
+          <div class="mood-select">
+            <label><input type="radio" name="mood" value="1">1</label>
+            <label><input type="radio" name="mood" value="2">2</label>
+            <label><input type="radio" name="mood" value="3" checked>3</label>
+            <label><input type="radio" name="mood" value="4">4</label>
+            <label><input type="radio" name="mood" value="5">5</label>
+          </div>
+          <label data-i18n="moodNoteLabel">Short note (optional)</label>
+          <input name="note" data-i18n="moodNotePlaceholder" placeholder="How was your day?" maxlength="240" />
+          <button class="btn btn-primary" type="submit" data-i18n="logMood">Log Mood</button>
+        </form>
+        <div class="mood-controls">
+          <button id="show-chart" class="btn btn-outline" data-i18n="showMood">Show Mood Progress</button>
+          <button id="hide-chart" class="btn btn-outline" style="display:none;" data-i18n="hideMood">Hide Chart</button>
+        </div>
+        <div id="chart-container" class="chart-container" style="display:none;"><canvas id="mood-chart"></canvas></div>
+        <div id="mood-result" class="result"></div>
+      </section>
+
+      <section id="book" class="card">
+        <h2 data-i18n="bookingTitle">Confidential Booking</h2>
+        <form id="booking-form" class="grid-2">
+          <div class="form-field">
+            <label data-i18n="bookingName">Name</label>
+            <input name="name" required />
+          </div>
+          <div class="form-field">
+            <label data-i18n="bookingEmail">Email</label>
+            <input name="email" type="email" required />
+          </div>
+          <div class="form-field">
+            <label data-i18n="bookingMode">Mode</label>
+            <select name="mode" required>
+              <option value="online" data-i18n="bookingModeOnline">Online</option>
+              <option value="offline" data-i18n="bookingModeOffline">On-campus</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label data-i18n="bookingDate">Date & Time</label>
+            <input name="datetime" type="datetime-local" required />
+          </div>
+          <div class="form-field">
+            <label data-i18n="bookingSubject">Subject</label>
+            <input name="subject" />
+          </div>
+          <div></div>
+          <button class="btn btn-primary" type="submit" data-i18n="bookingBtn">
+            Book Appointment
+          </button>
+        </form>
+        <div id="booking-result" class="result"></div>
+      </section>
+
+      <section id="resources" class="card">
+        <h2 data-i18n="resourcesTitle">Psychoeducational Resources</h2>
+        <div class="resource-controls">
+          <label data-i18n="resourcesFilter">Filter by category:
+            <select id="resource-filter">
+              <option value="all">All</option>
+            </select>
+          </label>
+          <input id="resource-search" data-i18n="resourcesSearch" placeholder="Search resources..." />
+        </div>
+        <div id="resources-list" class="resources_therapies_services"></div>
+      </section>
+
+      <section id="therapies" class="card">
+        <h2 data-i18n="therapiesTitle">Therapies</h2>
+        <div class="therapy-controls">
+          <label data-i18n="therapiesFilter">Filter by category:
+            <select id="therapy-filter">
+              <option value="all">All</option>
+            </select>
+          </label>
+          <input id="therapy-search" data-i18n="therapiesSearch" placeholder="Search therapies..." />
+        </div>
+        <div class="resources_therapies_services">
+          <div class="resources_therapies_services_card">
+            <h2>Audio Therapy</h2>
+            <p>Listening to music & other audio files often enlightens our mood.</p>
+            <a href="/html/audio.html">URL</a>
+          </div>
+
+          <div class="resources_therapies_services_card">
+            <h2>Reading Therapy</h2>
+            <p>Motivational quotes and books can help us to divert and change our mood.</p>
+            <a href="/html/reading.html">URL</a>
+          </div>
+
+          <div class="resources_therapies_services_card">
+            <h2>Yoga Therapy</h2>
+            <p>Yoga and exercise plays a very important role in our lives.</p>
+            <a href="/html/yoga.html">URL</a>
+          </div>
+
+          <div class="resources_therapies_services_card">
+            <h2>Spiritual Therapy</h2>
+            <p>Helps you to become more mindful in your thinking.</p>
+            <a href="/html/spiritual.html">URL</a>
+          </div>
+        </div>
+        <div id="therapies-list" class="grid"></div>
+      </section>
+
+      <section id="services" class="card">
+        <h2 data-i18n="servicesTitle">Services</h2>
+        <div class="service-controls">
+          <label data-i18n="servicesFilter">Filter by category:
+            <select id="service-filter">
+              <option value="all">All</option>
+            </select>
+          </label>
+          <input id="service-search" data-i18n="servicesSearch" placeholder="Search services..." />
+        </div>
+        <div class="resources_therapies_services">
+          <div class="resources_therapies_services_card">
+            <h2>Meal Planning</h2>
+            <p>Sometimes a good meal can help a lot. Structure the meal for the day based on the diet.</p>
+            <a href="/html/meal.html">URL</a>
+          </div>
+
+          <div class="resources_therapies_services_card">
+            <h2>Routine Management</h2>
+            <p>Structure the Daily routine to utilize the free time for excerise nad activities</p>
+            <a href="/html/routine.html">URL</a>
+          </div>
+
+          <div class="resources_therapies_services_card">
+            <h2>Physician consultation</h2>
+            <p>A quick guide from our Physicians to provide the best solution possible</p>
+            <a href="/html/physician.html">URL</a>
+          </div>
+
+          <div class="resources_therapies_services_card">
+            <h2>Product Store</h2>
+            <p>Buy Books/guides and equipment for yoga/exercises</p>
+            <a href="/html/products.html">URL</a>
+          </div>
+        </div>
+        <div id="services-list" class="grid"></div>
+      </section>
+
+      <section id="forum" class="card">
+        <h2 data-i18n="forumTitle">Peer Support Forum</h2>
+        <form id="post-form" class="stack">
+          <input name="author" data-i18n="forumNamePlaceholder" placeholder="Your display name (optional)" />
+          <textarea name="content" data-i18n="forumContentPlaceholder"
+            placeholder="Write your post (no personal contact details)..." required></textarea>
+          <button class="btn btn-primary" type="submit" data-i18n="forumPostBtn">Post</button>
+        </form>
+        <div id="posts-list"></div>
+      </section>
+
+      <!-- <section id="admin" class="card">
+        <h2>Admin Dashboard (demo)</h2>
+        <button id="refresh-analytics" class="btn btn-outline">Refresh Analytics</button>
+        <pre id="analytics-output"></pre>
+        <h3>Moderation</h3>
+        <div id="pending-posts"></div>
+      </section> -->
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content"><span class="close" data-close="loginModal">&times;</span>
+      <h2>Login</h2>
+      <form id="loginForm"><input type="email" name="email" placeholder="Email" required><input type="password"
+          name="password" placeholder="Password" required><button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="signupModal" class="modal">
+    <div class="modal-content"><span class="close" data-close="signupModal">&times;</span>
+      <h2>Sign Up</h2>
+      <form id="signupForm" class="stack"><input name="name" placeholder="Full name" required><input type="email"
+          name="email" placeholder="Email" required><input type="password" name="password" placeholder="Password"
+          required><input name="age" type="number" placeholder="Age"><select name="gender">
+          <option value="">Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select><input name="year" placeholder="Year of study"><input name="major"
+          placeholder="Major/Branch"><label>Stress level<select name="stress">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select></label><label>Sleep quality<select name="sleep">
+            <option>Good</option>
+            <option>Average</option>
+            <option>Poor</option>
+          </select></label><label>Ongoing counseling<select name="counseling">
+            <option>No</option>
+            <option>Yes</option>
+          </select></label><button type="submit" class="btn btn-primary">Create Account</button></form>
+    </div>
+  </div>
+
+  <div id="profileModal" class="modal">
+    <div class="modal-content profile-modal-content"><span class="close" data-close="profileModal">&times;</span>
+      <h2>My Profile</h2>
+      <div class="profile-pic-wrapper">
+        <img id="profilePic" src="images/avatar-placeholder.svg" alt="Profile Picture" class="profile-pic" />
+      </div>
+      <form id="uploadPicForm" class="profile-upload-form">
+        <label for="fileInput" class="file-input-label">
+          <input type="file" id="fileInput" name="file" accept="image/*" style="display: none;">
+          <span class="file-input-btn">📁 Choose Photo</span>
+        </label>
+        <span id="fileName" class="file-name"></span>
+        <button type="submit" class="btn btn-primary profile-upload-btn">Upload Photo</button>
+      </form>
+      <div id="profileInfo" class="profile-info-grid"></div>
+    </div>
+  </div>
+
+  <div id="consultantLoginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-close="consultantLoginModal">&times;</span>
+      <h2>Consultant Login</h2>
+      <form id="consultantLoginForm">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('openConsultantLogin').addEventListener('click', () => {
+      document.getElementById('consultantLoginModal').style.display = 'block';
+    });
+    document.querySelectorAll('.close').forEach(el => {
+      el.addEventListener('click', () => {
+        document.getElementById(el.dataset.close).style.display = 'none';
+      });
+    });
+    document.getElementById('consultantLoginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const email = formData.get('email');
+      const password = formData.get('password');
+      const resp = await fetch('/api/consultant/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      if (resp.ok) {
+        window.location.href = '/consultant.html';
+      } else {
+        alert('Invalid consultant credentials');
+      }
+    });
+  </script>
+  <script src="js/main.js" defer></script>
+</body>
+
+</html>

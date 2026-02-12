@@ -1,0 +1,37 @@
+[
+  {
+    "id": "r1",
+    "title": "Understanding Anxiety — Guide",
+    "description": "Short guide to recognise anxiety and basic coping strategies.",
+    "url": "https://www.who.int/",
+    "category": "Anxiety"
+  },
+  {
+    "id": "r2",
+    "title": "Progressive Muscle Relaxation (audio)",
+    "description": "Short audio exercises to release tension.",
+    "url": "https://www.therapistaid.com/therapy-guide/progressive-muscle-relaxation",
+    "category": "Relaxation"
+  },
+  {
+    "id": "r3",
+    "title": "Sleep Hygiene Tips",
+    "description": "Tips for better sleep habits for students.",
+    "url": "https://www.sleepfoundation.org/sleep-hygiene",
+    "category": "Sleep"
+  },
+  {
+    "id": "r4",
+    "title": "Managing Exam Stress",
+    "description": "Practical steps to prepare and calm nerves before exams.",
+    "url": "https://www.mind.org.uk/information-support/tips-for-everyday-living/students-and-mental-health/exam-stress/",
+    "category": "Stress"
+  },
+  {
+    "id": "r5",
+    "title": "Mindfulness for Beginners (video)",
+    "description": "Short mindfulness introduction video with exercises.",
+    "url": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/mindfulness/",
+    "category": "Relaxation"
+  }
+]

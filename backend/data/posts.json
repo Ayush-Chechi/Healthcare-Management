@@ -1,0 +1,116 @@
+[
+  {
+    "id": "p1",
+    "author": "StudentA",
+    "content": "Struggling with exams, any tips?",
+    "created_at": "2025-09-11T14:21:45.570457",
+    "approved": true,
+    "likes": 2,
+    "comments": [
+      {
+        "id": "c1",
+        "author": "Peer1",
+        "text": "Take breaks and keep a schedule.",
+        "created_at": "2025-09-11T14:21:45.570468"
+      }
+    ],
+    "user_email": null
+  },
+  {
+    "id": "0cd00008",
+    "author": "Utkarsh Singh Parihar",
+    "content": "I am having depression, and have no idea how to overcome it.",
+    "created_at": "2025-09-14T18:55:23.341037",
+    "approved": true,
+    "likes": 0,
+    "comments": [
+      {
+        "id": "d07728e2",
+        "author": "Utkarsh Singh",
+        "text": "Do something that you once wished for",
+        "created_at": "2025-09-14T19:40:15.547505"
+      }
+    ],
+    "user_email": "us7692334@gmail.com"
+  },
+  {
+    "id": "7b16c76e",
+    "author": "Vaibhav",
+    "content": "I am struggling with stage fright.",
+    "created_at": "2025-09-14T19:41:51.438620",
+    "approved": true,
+    "likes": 0,
+    "comments": [],
+    "user_email": "us7692334@gmail.com"
+  },
+  {
+    "id": "a53b9214",
+    "author": "Rohit Maurya",
+    "content": "I am not Good",
+    "created_at": "2026-01-26T15:30:29.587428",
+    "approved": true,
+    "likes": 0,
+    "comments": [],
+    "user_email": "quickhelp36@gmail.com"
+  },
+  {
+    "id": "42996d71",
+    "author": "Rohit Maurya",
+    "content": "i am bad boy...",
+    "created_at": "2026-01-26T16:31:14.438394",
+    "approved": true,
+    "likes": 0,
+    "comments": [],
+    "user_email": "quickhelp36@gmail.com"
+  },
+  {
+    "id": "c08560fd",
+    "author": "Rohit Maurya",
+    "content": "help me i am dead",
+    "created_at": "2026-01-27T06:30:19.722726",
+    "approved": true,
+    "likes": 0,
+    "comments": [],
+    "user_email": "consultant@example.com"
+  },
+  {
+    "id": "f6dc7210",
+    "author": "Rohit Maurya",
+    "content": "Hey its me",
+    "created_at": "2026-01-30T09:32:10.358619",
+    "approved": true,
+    "likes": 0,
+    "comments": [],
+    "user_email": "quickhelp36@gmail.com"
+  },
+  {
+    "id": "9f13f8af",
+    "author": "Rohit Maurya",
+    "content": "hey",
+    "created_at": "2026-01-30T10:25:54.384034",
+    "approved": true,
+    "likes": 0,
+    "comments": [],
+    "user_email": "quickhelp36@gmail.com"
+  },
+  {
+    "id": "d30dbd21",
+    "author": "Rohit Maurya",
+    "content": "hii",
+    "created_at": "2026-01-31T07:38:08.463811",
+    "approved": true,
+    "likes": 0,
+    "comments": [],
+    "user_email": "quickhelp36@gmail.com"
+  },
+  {
+    "id": "137b1491",
+    "author": "Rohit Maurya",
+    "content": "Write your post (no personal contact details)...",
+    "created_at": "2026-02-02T05:49:05.421892",
+    "approved": true,
+    "likes": 0,
+    "comments": [],
+    "user_email": "quickhelp36@gmail.com"
+  }
+]

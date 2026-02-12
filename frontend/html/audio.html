@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Therapy | Digital Health Support</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin: 0;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #0077b6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      color: #0077b6;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      color: #222;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #4facfe;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header data-aos="fade-down">
+    <h1>Audio Therapy</h1>
+    <p>Relax, Heal, and Reconnect with the Power of Sound</p>
+  </header>
+
+  <!-- Music Section -->
+  <section class="container" id="music">
+    <h2 class="section-title" data-aos="fade-up">🎵 Music for Healing</h2>
+    <div class="grid">
+      <div class="card" data-aos="zoom-in">
+        <i class="fa-solid fa-music"></i>
+        <h3>Calm & Relax</h3>
+        <p>Listen to soft tunes that reduce stress and promote relaxation.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fa-solid fa-spa"></i>
+        <h3>Focus Beats</h3>
+        <p>Enhance productivity and concentration with instrumental playlists.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fa-solid fa-bed"></i>
+        <h3>Sleep Sounds</h3>
+        <p>Drift into deep sleep with soothing background audio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcasts Section -->
+  <section class="container" id="podcasts">
+    <h2 class="section-title" data-aos="fade-up">🎙 Podcasts & Talks</h2>
+    <div class="grid">
+      <div class="card" data-aos="zoom-in">
+        <i class="fa-solid fa-headphones"></i>
+        <h3>Mindful Talks</h3>
+        <p>Gain insights from experts on mindfulness and mental health.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fa-solid fa-lightbulb"></i>
+        <h3>Motivation Boost</h3>
+        <p>Stay inspired with motivational podcasts for daily growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audiobooks Section -->
+  <section class="container" id="audiobooks">
+    <h2 class="section-title" data-aos="fade-up">📚 Therapeutic Audiobooks</h2>
+    <div class="grid">
+      <div class="card" data-aos="zoom-in">
+        <i class="fa-solid fa-book-open"></i>
+        <h3>Self-Help Guides</h3>
+        <p>Discover strategies for self-improvement and emotional strength.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Mind & Soul</h3>
+        <p>Learn techniques for mindfulness, meditation, and peace.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Digital Health Support | <a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
