@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import smtplib
 from email.mime.text import MIMEText
+from dotenv import load_dotenv
 
 HERE = os.path.dirname(__file__)
 ROOT = os.path.abspath(os.path.join(HERE, '..'))
@@ -16,6 +17,10 @@ MOOD_FILE = os.path.join(DATA_DIR, 'mood.json')
 TIPS_FILE = os.path.join(DATA_DIR, 'tips.json')
 USERS_FILE = os.path.join(DATA_DIR, 'users.json')
 UPLOAD_DIR = os.path.join(HERE, 'uploads')
+
+# Load environment variables from a local .env file (no effect in most production setups
+# where env vars are injected by the platform).
+load_dotenv()
 
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -159,10 +164,26 @@ def upload_profile_pic():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-# Chat endpoint (rule-based)
+# Chat endpoint (uses Hugging Face Inference API)
 import requests
 
-HF_TOKEN = os.environ.get("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")  # set your Hugging Face token as env variable
+
+def require_env(name: str) -> str:
+    """
+    Fetch a required environment variable, failing fast with a clear error
+    if it is not set. The value itself is never logged.
+    """
+    value = os.getenv(name)
+    if not value:
+        # Do not log the secret itself, only the variable name.
+        raise RuntimeError(f"Missing required environment variable: {name}")
+    return value
+
+
+# Hugging Face access token must be provided via environment variable HF_TOKEN.
+# For local development, put HF_TOKEN in a .env file (which must NOT be committed),
+# and in production / CI configure it in your platform's secret settings.
+HF_TOKEN = require_env("HF_TOKEN")
 MODEL_ID = "microsoft/DialoGPT-medium"  # you can try others too
 
 @app.route('/api/chat', methods=['POST'])
@@ -492,3 +513,6 @@ def refund_tokens():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+

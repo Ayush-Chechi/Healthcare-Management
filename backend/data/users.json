@@ -78,5 +78,21 @@
     "created_at": "2026-01-27T06:29:54.384212",
     "profile_pic": null,
     "tokens": 110
+  },
+  {
+    "id": "d4fa9746",
+    "name": "ayush",
+    "email": "ayushtemp@gmail.com",
+    "password_hash": "scrypt:32768:8:1$1wKEbatIPol2PLPN$506c1334de87e3d7af1a47b9b85e465094248d55438a0d1eef8af519fb44d69500325463b30b14471e9277506b42ff2aa304b38b42bcc07e39d788399eb71c0c",
+    "age": "22",
+    "gender": "Male",
+    "year": "3",
+    "major": "cse",
+    "stress": "Medium",
+    "sleep": "Good",
+    "counseling": "No",
+    "created_at": "2026-02-12T10:34:49.772617",
+    "profile_pic": null,
+    "tokens": 100
   }
 ]
