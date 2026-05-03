@@ -183,7 +183,7 @@ def require_env(name: str) -> str:
 # Hugging Face access token must be provided via environment variable HF_TOKEN.
 # For local development, put HF_TOKEN in a .env file (which must NOT be committed),
 # and in production / CI configure it in your platform's secret settings.
-HF_TOKEN = require_env("HF_TOKEN")
+HF_TOKEN = os.getenv("HF_TOKEN")
 MODEL_ID = "microsoft/DialoGPT-medium"  # you can try others too
 
 @app.route('/api/chat', methods=['POST'])
@@ -512,7 +512,8 @@ def refund_tokens():
     return jsonify({'success': False, 'error': 'user not found'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    PORT = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=PORT)
 
 
 
